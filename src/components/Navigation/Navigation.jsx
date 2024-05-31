@@ -3,21 +3,22 @@ import { NavLink } from 'react-router-dom';
 import css from './Navigation.module.css';
 
 const Navigation = () => (
-  <nav className={css.nav}>
+  <nav className={css.navbar}>
     <NavLink
       to="/register"
-      className={css.link}
-      activeClassName={css.activeLink}
+      className={({ isActive }) => (isActive ? css.activeLink : css.navLinks)}
     >
       Register
     </NavLink>
-    <NavLink to="/login" className={css.link} activeClassName={css.activeLink}>
+    <NavLink
+      to="/login"
+      className={({ isActive }) => (isActive ? css.activeLink : css.link)}
+    >
       Login
     </NavLink>
     <NavLink
       to="/contacts"
-      className={css.link}
-      activeClassName={css.activeLink}
+      className={({ isActive }) => (isActive ? css.activeLink : css.link)}
     >
       Contacts
     </NavLink>

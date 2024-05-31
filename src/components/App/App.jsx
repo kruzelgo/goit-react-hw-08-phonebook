@@ -21,7 +21,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.container}>
+    <div className={css.containerApp}>
       <Navigation />
       {isFetchingCurrentUser ? (
         <p>Loading...</p>

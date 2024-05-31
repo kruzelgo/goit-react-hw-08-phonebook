@@ -31,8 +31,8 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={css.form}>
-      <label className={css.label}>
+    <form onSubmit={handleSubmit} className={css.formContainer}>
+      <label className={css.formGroup}>
         Name
         <input
           type="text"
@@ -42,7 +42,7 @@ const Register = () => {
           required
         />
       </label>
-      <label className={css.label}>
+      <label className={css.formGroup}>
         Email
         <input
           type="email"
@@ -52,7 +52,7 @@ const Register = () => {
           required
         />
       </label>
-      <label className={css.label}>
+      <label className={css.formGroup}>
         Password
         <input
           type="password"
@@ -62,7 +62,7 @@ const Register = () => {
           required
         />
       </label>
-      <button type="submit" className={css.button}>
+      <button type="submit" className={css.submitButton}>
         Register
       </button>
     </form>

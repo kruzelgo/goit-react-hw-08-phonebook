@@ -27,8 +27,8 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={css.form}>
-      <label className={css.label}>
+    <form onSubmit={handleSubmit} className={css.loginContainer}>
+      <label className={css.labelLogin}>
         Email
         <input
           type="email"
@@ -38,7 +38,7 @@ const Login = () => {
           required
         />
       </label>
-      <label className={css.label}>
+      <label className={css.labelLogin}>
         Password
         <input
           type="password"
@@ -48,7 +48,7 @@ const Login = () => {
           required
         />
       </label>
-      <button type="submit" className={css.button}>
+      <button type="submit" className={css.submitButtonLogin}>
         Login
       </button>
     </form>

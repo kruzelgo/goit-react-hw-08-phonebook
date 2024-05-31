@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  gap: 10px;
+}
+
+.navLinks,
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.activeLink {
+  font-weight: bold;
+  color: blue;
+}

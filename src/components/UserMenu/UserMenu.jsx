@@ -8,12 +8,12 @@ const UserMenu = () => {
   const email = useSelector(state => state.auth.user.email);
 
   return (
-    <div className={css.container}>
-      <p className={css.email}>{email}</p>
+    <div className={css.userMenu}>
+      <p className={css.userMenu}>{email}</p>
       <button
         type="button"
         onClick={() => dispatch(logOut())}
-        className={css.button}
+        className={css.logoutButton}
       >
         Logout
       </button>

@@ -45,7 +45,7 @@ const Contacts = () => {
   };
 
   return (
-    <div className={css.container}>
+    <div className={css.contactsContainer}>
       <form onSubmit={handleSubmit} className={css.form}>
         <label className={css.label}>
           Name
@@ -67,7 +67,7 @@ const Contacts = () => {
             required
           />
         </label>
-        <button type="submit" className={css.button}>
+        <button type="submit" className={css.submitButton}>
           Add Contact
         </button>
       </form>
@@ -81,7 +81,10 @@ const Contacts = () => {
             <p>
               {name}: {number}
             </p>
-            <button onClick={() => handleDelete(id)} className={css.button}>
+            <button
+              onClick={() => handleDelete(id)}
+              className={css.deleteButton}
+            >
               Delete
             </button>
           </li>
