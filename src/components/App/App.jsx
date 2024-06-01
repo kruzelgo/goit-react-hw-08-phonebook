@@ -1,3 +1,4 @@
+//
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
@@ -22,6 +23,7 @@ export const App = () => {
 
   return (
     <div className={css.containerApp}>
+      <div className={css.backgroundOverlay}></div>
       <Navigation />
       {isFetchingCurrentUser ? (
         <p>Loading...</p>

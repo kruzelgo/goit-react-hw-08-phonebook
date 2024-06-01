@@ -1,28 +1,33 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './Navigation.module.css';
-import LoginSignupForm from '../LoginSignupForm/LoginSignupForm';
 
 const Navigation = () => (
   <nav className={css.navbar}>
     <NavLink
       to="/register"
-      className={css.navLinks}
-      activeClassName={css.activeLink}
+      className={({ isActive }) =>
+        `${css.navLinks} ${isActive ? css.activeLink : ''} ${css.fromCenter}`
+      }
     >
       Register
     </NavLink>
-    <NavLink to="/login" className={css.link} activeClassName={css.activeLink}>
+    <NavLink
+      to="/login"
+      className={({ isActive }) =>
+        `${css.navLinks} ${isActive ? css.activeLink : ''} ${css.fromCenter}`
+      }
+    >
       Login
     </NavLink>
     <NavLink
       to="/contacts"
-      className={css.link}
-      activeClassName={css.activeLink}
+      className={({ isActive }) =>
+        `${css.navLinks} ${isActive ? css.activeLink : ''} ${css.fromCenter}`
+      }
     >
       Contacts
     </NavLink>
-    <LoginSignupForm />
   </nav>
 );
 

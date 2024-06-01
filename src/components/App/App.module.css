@@ -3,6 +3,21 @@
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.backgroundOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/src/pics/metallic-holographic-background.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 0.5;
 }
 
 p {

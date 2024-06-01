@@ -1,4 +1,4 @@
-.loginContainer {
+/* .loginContainer {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
@@ -43,4 +43,128 @@
 
 .submitButton:hover {
   background-color: #4cae4c;
+} */
+
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
+
+.loginContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.formGroup {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 100%;
+  color: #fff;
+  font-variant: small-caps;
+}
+
+.formField {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .formLabel {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.formLabel {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.formField:focus {
+  ~ .formLabel {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight: 700;
+  }
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #fff grey);
+  border-image-slice: 1;
+}
+
+.formField:required,
+.formField:invalid {
+  box-shadow: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  background-color: #222222;
+}
+
+.submitButtonLogin {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #702e97;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  color: #c5de21;
+  text-decoration: none;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-family: calibri;
+  border-radius: 3px;
+  border: 2px solid #c5de21;
+  padding: 1rem 2rem;
+  box-shadow: 0.9px 1px 0 0#c5de21, 1.5px 2px 0 0 #c5de21, 2.5px 3px 0 0 #c5de21,
+    3.5px 4px 0 0 #c5de21, 4.5px 5px 0 0 #c5de21, 5.5px 6px 0 0 #c5de21,
+    6.5px 7px 0 0 #c5de21, 7.5px 8px 0 0 #c5de21, 8.5px 9px 0 0 #c5de21,
+    9.5px 10px 0 0 #c5de21;
+  position: relative;
+  inset: 0;
+  cursor: pointer;
+  transform: rotateX(0), rotateY(0) rotateZ(0);
+  display: inline-block;
+  outline: 2px dashed transparent;
+  transition: all 600ms ease;
+}
+
+.submitButtonLogin:hover {
+  inset: 6px 0 5.5px 0;
+  transform: rotateX(5deg) rotateY(3deg) rotateZ(0.25deg);
+  box-shadow: none;
 }
