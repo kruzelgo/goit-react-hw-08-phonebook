@@ -8,6 +8,8 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -20,6 +22,9 @@ const Register = () => {
       case 'password':
         setPassword(value);
         break;
+      case 'confirmPassword':
+        setConfirmPassword(value);
+        break;
       default:
         return;
     }
@@ -27,42 +32,78 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+    setError('');
     dispatch(register({ name, email, password }));
   };
 
   return (
-    <form onSubmit={handleSubmit} className={css.formContainer}>
-      <label className={css.formGroup}>
-        Name
+    <form onSubmit={handleSubmit} className={css.loginContainer}>
+      <div className={css.formGroup}>
         <input
           type="text"
+          className={css.formField}
+          placeholder="Name"
           name="name"
+          id="name"
           value={name}
           onChange={handleChange}
           required
         />
-      </label>
-      <label className={css.formGroup}>
-        Email
+        <label htmlFor="name" className={css.formLabel}>
+          Name
+        </label>
+      </div>
+      <div className={css.formGroup}>
         <input
           type="email"
+          className={css.formField}
+          placeholder="Email"
           name="email"
+          id="email"
           value={email}
           onChange={handleChange}
           required
         />
-      </label>
-      <label className={css.formGroup}>
-        Password
+        <label htmlFor="email" className={css.formLabel}>
+          Email
+        </label>
+      </div>
+      <div className={css.formGroup}>
         <input
           type="password"
+          className={css.formField}
+          placeholder="Password"
           name="password"
+          id="password"
           value={password}
           onChange={handleChange}
           required
         />
-      </label>
-      <button type="submit" className={css.submitButton}>
+        <label htmlFor="password" className={css.formLabel}>
+          Password
+        </label>
+      </div>
+      <div className={css.formGroup}>
+        <input
+          type="password"
+          className={css.formField}
+          placeholder="Confirm Password"
+          name="confirmPassword"
+          id="confirmPassword"
+          value={confirmPassword}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="confirmPassword" className={css.formLabel}>
+          Confirm Password
+        </label>
+      </div>
+      {error && <p className={css.error}>{error}</p>}
+      <button type="submit" className={css.submitButtonLogin}>
         Register
       </button>
     </form>
