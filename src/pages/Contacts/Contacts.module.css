@@ -32,23 +32,41 @@
 }
 
 .inputContacts:focus {
-  border-color: #11998e;
+  border-color: #c5de21;
 }
 
 .submitButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #c5de21;
+  padding: 10px;
+  font-size: 18px;
+  color: #c5de21;
+  background-color: #702e97;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   margin-top: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Calibri, sans-serif;
+  border: 2px solid #c5de21;
+  padding: 1rem 2rem;
+  box-shadow: 0.9px 1px 0 0 #c5de21, 1.5px 2px 0 0 #c5de21,
+    2.5px 3px 0 0 #c5de21, 3.5px 4px 0 0 #c5de21, 4.5px 5px 0 0 #c5de21,
+    5.5px 6px 0 0 #c5de21, 6.5px 7px 0 0 #c5de21, 7.5px 8px 0 0 #c5de21,
+    8.5px 9px 0 0 #c5de21, 9.5px 10px 0 0 #c5de21;
+  position: relative;
+  inset: 0;
+  cursor: pointer;
+  transform: rotateX(0) rotateY(0) rotateZ(0);
+  display: inline-block;
+  outline: 2px dashed transparent;
+  transition: all 600ms ease;
 }
 
-.submitButton:hover {
-  background-color: #702e97;
+.submitButton:hover,
+.submitButton:focus {
+  inset: 6px 0 5.5px 0;
+  transform: rotateX(5deg) rotateY(3deg) rotateZ(0.25deg);
+  box-shadow: none;
 }
 
 .contactList {

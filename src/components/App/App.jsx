@@ -1,4 +1,3 @@
-//
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
@@ -8,6 +7,9 @@ import UserMenu from '../UserMenu/UserMenu';
 import Register from '../../pages/Register/Register';
 import Login from '../../pages/Login/Login';
 import Contacts from '../../pages/Contacts/Contacts';
+// import Filter from './Filter/Filter';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import css from './App.module.css';
 
 export const App = () => {
@@ -16,15 +18,24 @@ export const App = () => {
     state => state.auth.isFetchingCurrentUser
   );
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const userEmail = useSelector(state => state.auth.user.email);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (isLoggedIn && userEmail) {
+      toast.success(`Welcome back, ${userEmail}!`);
+    }
+  }, [isLoggedIn, userEmail]);
+
   return (
     <div className={css.containerApp}>
+      <ToastContainer />
+      <h1 className={css.pageTitle}>Your PhoneBook</h1>
       <div className={css.backgroundOverlay}></div>
-      <Navigation />
+      <Navigation isLoggedIn={isLoggedIn} />
       {isFetchingCurrentUser ? (
         <p>Loading...</p>
       ) : (
