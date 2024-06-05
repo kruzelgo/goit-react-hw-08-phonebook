@@ -18,12 +18,15 @@ export const App = () => {
   );
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const userEmail = useSelector(state =>
-    state.auth.user ? state.auth.user.email : ''
+    state.auth.user ? state.auth.user.email : null
   );
+  const token = useSelector(state => state.auth.token);
 
   useEffect(() => {
-    dispatch(fetchCurrentUser());
-  }, [dispatch]);
+    if (token) {
+      dispatch(fetchCurrentUser());
+    }
+  }, [dispatch, token]);
 
   useEffect(() => {
     if (isLoggedIn && userEmail) {
