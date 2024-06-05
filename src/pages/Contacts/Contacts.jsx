@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  fetchContacts,
   addContact,
   deleteContact,
+  fetchContacts,
 } from '../../Redux/contactsOperations';
+import Filter from '../../components/Filter/Filter';
 import css from './Contacts.module.css';
 
 const Contacts = () => {
@@ -12,6 +13,7 @@ const Contacts = () => {
   const contacts = useSelector(state => state.contacts.items);
   const isLoading = useSelector(state => state.contacts.isLoading);
   const error = useSelector(state => state.contacts.error);
+  const filter = useSelector(state => state.filter.toLowerCase());
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -44,6 +46,10 @@ const Contacts = () => {
     dispatch(deleteContact(id));
   };
 
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter)
+  );
+
   return (
     <div className={css.contactsContainer}>
       <form onSubmit={handleSubmit} className={css.formContacts}>
@@ -74,11 +80,13 @@ const Contacts = () => {
         </button>
       </form>
 
+      <Filter filter={filter} />
+
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
 
       <ul className={css.contactList}>
-        {contacts.map(({ id, name, number }) => (
+        {filteredContacts.map(({ id, name, number }) => (
           <li key={id} className={css.contactItem}>
             <p>
               {name}: {number}

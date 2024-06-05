@@ -7,7 +7,6 @@ import UserMenu from '../UserMenu/UserMenu';
 import Register from '../../pages/Register/Register';
 import Login from '../../pages/Login/Login';
 import Contacts from '../../pages/Contacts/Contacts';
-// import Filter from './Filter/Filter';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './App.module.css';
@@ -18,7 +17,9 @@ export const App = () => {
     state => state.auth.isFetchingCurrentUser
   );
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  const userEmail = useSelector(state => state.auth.user.email);
+  const userEmail = useSelector(state =>
+    state.auth.user ? state.auth.user.email : ''
+  );
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -55,7 +56,7 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}
-      {isLoggedIn && <UserMenu />}
+      {isLoggedIn && <UserMenu email={userEmail} />}
     </div>
   );
 };

@@ -1,143 +1,9 @@
-// import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { logIn } from '../../Redux/authOperations';
-// import { toast } from 'react-toastify';
-
-// const LoginSignup = () => {
-//   const [isSignup, setIsSignup] = useState(false);
-//   const dispatch = useDispatch();
-//   const authError = useSelector(state => state.auth.error);
-
-//   const toggleForm = () => {
-//     setIsSignup(!isSignup);
-//   };
-
-//   const handleSignin = event => {
-//     event.preventDefault();
-//     const email = event.target.email.value;
-//     const password = event.target.password.value;
-//     dispatch(logIn({ email, password }));
-//   };
-
-//   return (
-//     <div className="container">
-//       <div className={`frame ${isSignup ? 'frame-long' : ''}`}>
-//         <div className="nav">
-//           <ul className="links">
-//             <li
-//               className={isSignup ? 'signup-inactive' : 'signin-active'}
-//               onClick={toggleForm}
-//             >
-//               <a className="btn">Sign in</a>
-//             </li>
-//             <li
-//               className={isSignup ? 'signup-active' : 'signin-inactive'}
-//               onClick={toggleForm}
-//             >
-//               <a className="btn">Sign up</a>
-//             </li>
-//           </ul>
-//         </div>
-//         <div>
-//           <form
-//             className={`form-signin ${isSignup ? 'form-signin-left' : ''}`}
-//             onSubmit={handleSignin}
-//           >
-//             <label htmlFor="email">Email</label>
-//             <input
-//               className="form-styling"
-//               type="text"
-//               name="email"
-//               placeholder=""
-//               required
-//             />
-//             <label htmlFor="password">Password</label>
-//             <input
-//               className="form-styling"
-//               type="password"
-//               name="password"
-//               placeholder=""
-//               required
-//             />
-//             <div className="btn-animate">
-//               <button className="btn-signin" type="submit">
-//                 Sign in
-//               </button>
-//             </div>
-//           </form>
-
-//           <form
-//             className={`form-signup ${
-//               isSignup ? 'form-signup-left' : 'form-signup-down'
-//             }`}
-//             name="form"
-//           >
-//             <label htmlFor="fullname">Full name</label>
-//             <input
-//               className="form-styling"
-//               type="text"
-//               name="fullname"
-//               placeholder=""
-//             />
-//             <label htmlFor="email">Email</label>
-//             <input
-//               className="form-styling"
-//               type="text"
-//               name="email"
-//               placeholder=""
-//             />
-//             <label htmlFor="password">Password</label>
-//             <input
-//               className="form-styling"
-//               type="password"
-//               name="password"
-//               placeholder=""
-//             />
-//             <label htmlFor="confirmpassword">Confirm password</label>
-//             <input
-//               className="form-styling"
-//               type="password"
-//               name="confirmpassword"
-//               placeholder=""
-//             />
-//             <a className="btn-signup" onClick={handleSignup}>
-//               Sign Up
-//             </a>
-//           </form>
-//         </div>
-
-//         <div className="forgot">
-//           <a href="#">Forgot your password?</a>
-//         </div>
-
-//         <div>
-//           <div className="cover-photo"></div>
-//           <div className="profile-photo"></div>
-//           <h1 className="welcome">Welcome, Chris</h1>
-//           <a className="btn-goback" onClick={() => window.location.reload()}>
-//             Go back
-//           </a>
-//         </div>
-//       </div>
-
-//       <a
-//         id="refresh"
-//         value="Refresh"
-//         onClick={() => window.location.reload()}
-//         hidden="hidden"
-//       ></a>
-//     </div>
-//   );
-// };
-
-// export default LoginSignup;
-
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn, register } from '../../Redux/authOperations';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './LoginSignup.css'; // Upewnij się, że importujesz odpowiednie style
+import './LoginSignup.css';
 
 const LoginSignup = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -155,6 +21,8 @@ const LoginSignup = () => {
     dispatch(logIn({ email, password })).then(response => {
       if (response.error) {
         toast.error(response.error.message);
+      } else if (authError) {
+        toast.error(authError);
       }
     });
   };
@@ -174,6 +42,8 @@ const LoginSignup = () => {
     dispatch(register({ name: fullName, email, password })).then(response => {
       if (response.error) {
         toast.error(response.error.message);
+      } else if (authError) {
+        toast.error(authError);
       }
     });
   };

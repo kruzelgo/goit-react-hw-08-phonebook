@@ -60,6 +60,7 @@
   display: inline-block;
   outline: 2px dashed transparent;
   transition: all 600ms ease;
+  margin-bottom: 20px;
 }
 
 .submitButton:hover,
